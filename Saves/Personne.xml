@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPersonne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Personne>
+    <Nom>Russel</Nom>
+    <Prenom>Kurt</Prenom>
+    <Age>69</Age>
+  </Personne>
+  <Personne>
+    <Nom>Spader</Nom>
+    <Prenom>James</Prenom>
+    <Age>60</Age>
+  </Personne>
+  <Personne>
+    <Nom>Emmerich</Nom>
+    <Prenom>Roland</Prenom>
+    <Age />
+  </Personne>
+  <Personne>
+    <Nom>Hawke</Nom>
+    <Prenom>Ethan</Prenom>
+    <Age />
+  </Personne>
+</ArrayOfPersonne>

@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="GestionFilm_Tanguy.UserControls.PersonneControl"
+             x:Name="UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GestionFilm_Tanguy.UserControls"
+             xmlns:cmd="clr-namespace:GestionFilm_Tanguy.Commands"
+             mc:Ignorable="d" 
+             d:DesignHeight="{Binding Height}" d:DesignWidth="{Binding Width}">
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="cmd:CustomCommands.SaveChanges_Personne" CanExecute="SaveChanges_Personne_CanExecute" Executed="SaveChanges_Personne_Executed" />
+    </UserControl.CommandBindings>
+    
+    <Viewbox StretchDirection="Both" Stretch="Uniform">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="LB_Nom" Content="Nom" HorizontalAlignment="Left"></Label>
+            <Label x:Name="LB_Prenom" Content="Prenom" HorizontalAlignment="Left" Grid.Row="2"></Label>
+            <Label x:Name="LB_Age" Content="Age" HorizontalAlignment="Left" Grid.Row="4"></Label>
+
+            <TextBox x:Name="TB_Nom" HorizontalAlignment="Right" Width="200" Height="30" Grid.Column="2"></TextBox>
+            <TextBox x:Name="TB_Prenom" HorizontalAlignment="Right" Width="200" Height="30" Grid.Row="2" Grid.Column="2"></TextBox>
+            <TextBox x:Name="TB_Age" HorizontalAlignment="Right"  Width="200" Height="30" Grid.Row="4" Grid.Column="2"></TextBox>
+
+            <Button x:Name="BTN_SaveChanges" Content="Save Changes" Grid.Row="6" Grid.Column="3"
+                    Command="cmd:CustomCommands.SaveChanges_Personne"></Button>
+        </Grid>
+    </Viewbox>
+</UserControl>

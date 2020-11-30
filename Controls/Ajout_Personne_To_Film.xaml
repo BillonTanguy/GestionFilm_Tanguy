@@ -1,0 +1,39 @@
+﻿<Window x:Class="GestionFilm_Tanguy.Controls.Ajout_Personne_To_Film"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionFilm_Tanguy.Controls"
+        xmlns:cmd="clr-namespace:GestionFilm_Tanguy.Commands"
+        mc:Ignorable="d"
+        Title="Ajout_Personne_To_Film" Height="125" Width="600">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="cmd:CustomCommands.Ajouter_Personne" CanExecute="Ajouter_Personne_CanExecute" Executed="Ajouter_Personne_Executed" />
+    </Window.CommandBindings>
+    
+    <Grid>
+        <Label x:Name="Add_Personne_To_Film_LB" Content="Label" HorizontalAlignment="Left" Margin="35,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.575,-0.141"/>
+        <ComboBox x:Name="Add_Personne_To_Film_CB" ItemsSource="{Binding}" 
+                  HorizontalAlignment="Left" Margin="133,32,0,0" VerticalAlignment="Top" 
+                  Width="283" Height="26">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                <Binding Path="Nom"/>
+                                <Binding  Path="Prenom"/>
+                                <Binding  Path="Age"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button x:Name="Add_Personne_To_Film_BTN_ADD" Content="Add"
+                HorizontalAlignment="Left" Margin="461,32,0,0" VerticalAlignment="Top" Width="81" Height="26"
+                Command="cmd:CustomCommands.Ajouter_Personne"/>
+
+    </Grid>
+</Window>
