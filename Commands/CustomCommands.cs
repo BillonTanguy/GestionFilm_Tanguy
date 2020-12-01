@@ -25,5 +25,9 @@ namespace GestionFilm_Tanguy.Commands
         public static readonly RoutedUICommand Add_Acteur = new RoutedUICommand();
         public static readonly RoutedUICommand SaveChanges_Acteur = new RoutedUICommand();
 
+        public static readonly RoutedUICommand OpenFile = new RoutedUICommand();
+        public static readonly RoutedUICommand SaveAsFile = new RoutedUICommand();
+        public static readonly RoutedUICommand Research = new RoutedUICommand();
+
     }
 }

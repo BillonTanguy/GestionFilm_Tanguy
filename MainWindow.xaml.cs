@@ -25,8 +25,6 @@ namespace GestionFilm_Tanguy
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Context Context { get; set; }
-
         public MainWindow()
         {
             //on initialise le context
@@ -84,16 +82,14 @@ namespace GestionFilm_Tanguy
         //Ouvre fichiers xml
         private void MenuItem_Ouvrir_Click(object sender, RoutedEventArgs e)
         {
-            SaveContext Save = new SaveContext();
+            OpenWindow_FileExplorer();
 
-            string CurrentDirectory = Directory.GetCurrentDirectory();
-            string chemin_Context = System.IO.Path.Combine(CurrentDirectory, Context.DOSSIER_EXPORT, Context.CONTEXT_XML);
+            SaveContext Save = GetFile();
 
-            XmlSerializer serializerFilm = new XmlSerializer(typeof(SaveContext));
-            
-            using (StreamReader reader = new StreamReader(chemin_Context))
-                Save = serializerFilm.Deserialize(reader) as SaveContext;
+            if (Save == null) return;
 
+            Context.Films.Clear();
+            Context.Personnes.Clear();
             ContextFactory.GetContext(Save);
 
             //Pour refresh les datagrid
@@ -119,8 +115,37 @@ namespace GestionFilm_Tanguy
 
         private void MenuItem_EnregistrerSous_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow_FileExplorer(false);
+            MenuItem_Enregistrer_Click(null, null);
         }
+
+        private void OpenWindow_FileExplorer(bool OpenMode = true)
+        {
+            //On ouvre l'explorateur de fichier
+            string CurrentDirectory2 = Directory.GetCurrentDirectory();
+            string chemin_Context3 = System.IO.Path.Combine(CurrentDirectory2, Context.DOSSIER_EXPORT);
+
+            ExplorateurFichier fenetre = new ExplorateurFichier(chemin_Context3, OpenMode);
+            fenetre.ShowDialog();
+        }
+
+        private SaveContext GetFile()
+        {
+            if (Context.CONTEXT_XML == "") return null;
+
+            SaveContext Save = new SaveContext();
+
+            string CurrentDirectory = Directory.GetCurrentDirectory();
+            string chemin_Context = System.IO.Path.Combine(CurrentDirectory, Context.DOSSIER_EXPORT, Context.CONTEXT_XML);
+
+            XmlSerializer serializerFilm = new XmlSerializer(typeof(SaveContext));
+
+            using (StreamReader reader = new StreamReader(chemin_Context))
+                Save = serializerFilm.Deserialize(reader) as SaveContext;
+
+            return Save;
+        }
+
         #endregion
 
         #region DETAILS

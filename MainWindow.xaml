@@ -5,68 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionFilm_Tanguy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="900">
 
-    <Grid>
+    <Viewbox StretchDirection="Both" Stretch="Uniform">
+        <Grid>
 
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Fichier">
-                <MenuItem Header="Ouvrir"  Click="MenuItem_Ouvrir_Click"/>
-                <MenuItem Header="Enregistrer" Click="MenuItem_Enregistrer_Click"/>
-                <MenuItem Header="Enregistrer Sous" Click="MenuItem_EnregistrerSous_Click"/>
-            </MenuItem>
-            <MenuItem Header="Ajouter">
-                <MenuItem Header="Film" Click="MenuItem_Ajouter_Film_Click"/>
-                <MenuItem Header="Personne" Click="MenuItem_Ajouter_Personne_Click"/>
-            </MenuItem>
-        </Menu>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Fichier">
+                    <MenuItem Header="Ouvrir"  Click="MenuItem_Ouvrir_Click"/>
+                    <MenuItem Header="Enregistrer" Click="MenuItem_Enregistrer_Click"/>
+                    <MenuItem Header="Enregistrer Sous" Click="MenuItem_EnregistrerSous_Click"/>
+                </MenuItem>
+                <MenuItem Header="Ajouter">
+                    <MenuItem Header="Film" Click="MenuItem_Ajouter_Film_Click"/>
+                    <MenuItem Header="Personne" Click="MenuItem_Ajouter_Personne_Click"/>
+                </MenuItem>
+            </Menu>
 
-        <TextBox x:Name="TextBox_Rechercher"
+            <TextBox x:Name="TextBox_Rechercher"
                  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="45,50,0,0"
                  Width="300" Height="30"/>
 
-        <Button x:Name="Btn_Rechercher" Content="Rechercher" 
+            <Button x:Name="Btn_Rechercher" Content="Rechercher" 
                 HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="400,50,0,0"
                 Width="100" Height="30" Click="Btn_Rechercher_Click"/>
-        
-        <DataGrid x:Name="DG_Personne" ItemsSource="{Binding}" AutoGenerateColumns="False"
-                  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="395,90,0,0" 
+
+            <DataGrid x:Name="DG_Personne" ItemsSource="{Binding}" AutoGenerateColumns="False"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="395,90,40,40" 
                   Width="350" Height="300" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom"  Binding="{Binding Nom}"  Width="125"/>
-                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"   Width="122"/>
-                <DataGridTextColumn Header="Age" Binding="{Binding Age}"  Width="48"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Width="44" Height="20" Content="Details" Click="Personne_ShowDetails"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom"  Binding="{Binding Nom}"  Width="125"/>
+                    <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"   Width="122"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}"  Width="48"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="44" Height="20" Content="Details" Click="Personne_ShowDetails"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <DataGrid x:Name="DG_Film" ItemsSource="{Binding}" AutoGenerateColumns="False" 
-                  HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="45,90,0,0" 
+            <DataGrid x:Name="DG_Film" ItemsSource="{Binding}" AutoGenerateColumns="False" 
+                  HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="40,90,0,40" 
                   Width="350" Height="300" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Titre"  Binding="{Binding Titre}" Width="245"/>
-                <DataGridTextColumn Header="Annee" Binding="{Binding Annee}" Width="50"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Width="44" Height="20" Content="Details" Click="Film_ShowDetails"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-
-        
-
-    </Grid>
-
-
-
-
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Titre"  Binding="{Binding Titre}" Width="245"/>
+                    <DataGridTextColumn Header="Annee" Binding="{Binding Annee}" Width="50"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Width="44" Height="20" Content="Details" Click="Film_ShowDetails"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Viewbox>
 </Window>

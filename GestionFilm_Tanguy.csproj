@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +60,9 @@
     <Compile Include="Fenetre\ActeurDetails.xaml.cs">
       <DependentUpon>ActeurDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fenetre\ExplorateurFichier.xaml.cs">
+      <DependentUpon>ExplorateurFichier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fenetre\FilmDetails.xaml.cs">
       <DependentUpon>FilmDetails.xaml</DependentUpon>
     </Compile>
@@ -79,6 +83,9 @@
     <Compile Include="UserControls\ActeurControl.xaml.cs">
       <DependentUpon>ActeurControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ExplorateurFichierControl.xaml.cs">
+      <DependentUpon>ExplorateurFichierControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilmControl.xaml.cs">
       <DependentUpon>FilmControl.xaml</DependentUpon>
     </Compile>
@@ -92,6 +99,10 @@
       <DependentUpon>PersonneControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Fenetre\ActeurDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fenetre\ExplorateurFichier.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\ActeurControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ExplorateurFichierControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
