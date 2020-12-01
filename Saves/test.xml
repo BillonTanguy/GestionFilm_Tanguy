@@ -3,27 +3,21 @@
   <Personnes>
     <SavePersonne>
       <Id>1</Id>
-      <Nom>Simson</Nom>
-      <Prenom>Bart</Prenom>
-      <Age />
-    </SavePersonne>
-    <SavePersonne>
-      <Id>2</Id>
-      <Nom>Simson</Nom>
-      <Prenom>Homer</Prenom>
+      <Nom>&lt;qg</Nom>
+      <Prenom />
       <Age />
     </SavePersonne>
   </Personnes>
   <Films>
     <SaveFilm>
       <Id>1</Id>
-      <Titre>test</Titre>
+      <Titre>G&lt;sgr</Titre>
       <Annee />
-      <Realisateurs>
-        <int>1</int>
-      </Realisateurs>
+      <Realisateurs />
       <Producteurs />
-      <Acteurs />
+      <Acteurs>
+        <int>1</int>
+      </Acteurs>
       <Roles />
     </SaveFilm>
   </Films>

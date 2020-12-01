@@ -8,6 +8,16 @@ namespace GestionFilm_Tanguy.Models
 {
     public class Acteur : Personne
     {
-        public string Role { get; set; }
+        private string role;
+
+        public string Role
+        {
+            get { return role; }
+            set
+            {
+                role = value;
+                Notify();
+            }
+        }
     }
 }

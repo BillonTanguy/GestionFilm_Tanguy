@@ -19,7 +19,11 @@ namespace GestionFilm_Tanguy.Models.Factory
 
             foreach (Personne p in film.Realisateurs) result.Realisateurs.Add(p.Id);
             foreach (Personne p in film.Producteurs) result.Producteurs.Add(p.Id);
-            foreach (Personne p in film.Acteurs) result.Acteurs.Add(p.Id);
+            foreach (Acteur a in film.Acteurs)
+            {
+                result.Acteurs.Add(a.Id);
+                result.Roles.Add(a.Role);
+            }
 
             return result;
         }

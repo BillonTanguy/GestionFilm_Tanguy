@@ -3,28 +3,16 @@
   <Personnes>
     <SavePersonne>
       <Id>1</Id>
-      <Nom>Simson</Nom>
-      <Prenom>Bart</Prenom>
-      <Age />
-    </SavePersonne>
-    <SavePersonne>
-      <Id>2</Id>
-      <Nom>Simson</Nom>
-      <Prenom>Homer</Prenom>
-      <Age />
-    </SavePersonne>
-    <SavePersonne>
-      <Id>3</Id>
-      <Nom>Simson</Nom>
-      <Prenom>Marge</Prenom>
-      <Age />
+      <Nom>dqth</Nom>
+      <Prenom>deth</Prenom>
+      <Age>dhw</Age>
     </SavePersonne>
   </Personnes>
   <Films>
     <SaveFilm>
       <Id>1</Id>
-      <Titre>test</Titre>
-      <Annee />
+      <Titre>qethgh</Titre>
+      <Annee>dth</Annee>
       <Realisateurs>
         <int>1</int>
       </Realisateurs>

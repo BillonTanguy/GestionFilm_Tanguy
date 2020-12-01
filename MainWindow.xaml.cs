@@ -55,20 +55,12 @@ namespace GestionFilm_Tanguy
             List<Personne> listPersonne = new List<Personne>();
 
             foreach (Film film in Context.Films)
-            {
                 if (film.Titre.Contains(TextBox_Rechercher.Text) || film.Annee.Contains(TextBox_Rechercher.Text))
-                {
                     listFilm.Add(film);
-                }
-            }
             
             foreach (Personne personne in Context.Personnes)
-            {
                 if (personne.Nom.Contains(TextBox_Rechercher.Text) || personne.Prenom.Contains(TextBox_Rechercher.Text) || personne.Age.Contains(TextBox_Rechercher.Text))
-                {
                     listPersonne.Add(personne);
-                }
-            }
 
             //Pour refresh les datagrid
             DataGridFilmReset(listFilm);
@@ -78,7 +70,6 @@ namespace GestionFilm_Tanguy
         #endregion
 
         #region XML
-
         //Ouvre fichiers xml
         private void MenuItem_Ouvrir_Click(object sender, RoutedEventArgs e)
         {
@@ -100,6 +91,8 @@ namespace GestionFilm_Tanguy
         //Enregistre dans fichiers xml
         private void MenuItem_Enregistrer_Click(object sender, RoutedEventArgs e)
         {
+            if (Context.CONTEXT_XML == "") return;
+
             //On copie notre Context dans un objet intermédiaire car les liste sont static => probleme avec Serialisation
             SaveContext Save = ContextFactory.GetContext();
 
@@ -145,7 +138,6 @@ namespace GestionFilm_Tanguy
 
             return Save;
         }
-
         #endregion
 
         #region DETAILS

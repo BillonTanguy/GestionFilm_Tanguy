@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Personnes>
+    <SavePersonne>
+      <Id>1</Id>
+      <Nom>dth</Nom>
+      <Prenom>deqth</Prenom>
+      <Age>dthe</Age>
+    </SavePersonne>
+  </Personnes>
+  <Films>
+    <SaveFilm>
+      <Id>1</Id>
+      <Titre>sd&lt;fh</Titre>
+      <Annee />
+      <Realisateurs />
+      <Producteurs />
+      <Acteurs>
+        <int>1</int>
+      </Acteurs>
+      <Roles />
+    </SaveFilm>
+  </Films>
+</SaveContext>

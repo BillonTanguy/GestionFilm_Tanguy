@@ -87,12 +87,13 @@ namespace GestionFilm_Tanguy.UserControls
             Personne personne = (Personne)fenetre.DataContext;
 
             Acteur monActeur = new Acteur();
+            monActeur.Id = personne.Id;
             monActeur.Nom = personne.Nom;
             monActeur.Prenom = personne.Prenom;
             monActeur.Age = personne.Age;
-            monActeur.Role = "";
+            monActeur.Role = "TEST";
 
-            if (!list.Contains(personne)) list.Add(monActeur);
+            if (!list.Contains(monActeur)) list.Add(monActeur);
 
             DataGridInit();
         }
