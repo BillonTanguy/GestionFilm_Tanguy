@@ -8,8 +8,19 @@ namespace GestionFilm_Tanguy.Models
 {
     public class Film : BaseModel
     {
+        private int id;
         private string titre;
         private string annee;
+
+        public int Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                Notify();
+            }
+        }
 
         public string Titre
         {

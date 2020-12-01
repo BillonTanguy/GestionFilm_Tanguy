@@ -83,6 +83,9 @@ namespace GestionFilm_Tanguy.UserControls
 
         private void Add_Film_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            if (Context.Films.Count > 0) Film.Id = Context.Films[Context.Films.Count - 1].Id + 1;
+            else Film.Id = 1;
+
             Film.Titre = TB_Titre.Text;
             Film.Annee = TB_Annee.Text;
 

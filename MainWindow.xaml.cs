@@ -1,5 +1,6 @@
 ﻿using GestionFilm_Tanguy.Fenetre;
 using GestionFilm_Tanguy.Models;
+using GestionFilm_Tanguy.Models.Factory;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,6 +36,7 @@ namespace GestionFilm_Tanguy
             InitializeComponent();
         }
 
+        #region MENU AJOUTER
         private void MenuItem_Ajouter_Film_Click(object sender, RoutedEventArgs e)
         {
             FilmDetails fenetre = new FilmDetails(new Film(), false, true);
@@ -46,7 +48,9 @@ namespace GestionFilm_Tanguy
             PersonneDetails fenetre = new PersonneDetails(new Personne(), false, true);
             fenetre.ShowDialog();
         }
+        #endregion
 
+        #region RECHERCHER
         private void Btn_Rechercher_Click(object sender, RoutedEventArgs e)
         {
             List<Film> listFilm = new List<Film>();
@@ -73,6 +77,9 @@ namespace GestionFilm_Tanguy
             DataGridPersonneReset(listPersonne);
 
         }
+        #endregion
+
+        #region XML
 
         //Ouvre fichiers xml
         private void MenuItem_Ouvrir_Click(object sender, RoutedEventArgs e)
@@ -87,8 +94,7 @@ namespace GestionFilm_Tanguy
             using (StreamReader reader = new StreamReader(chemin_Context))
                 Save = serializerFilm.Deserialize(reader) as SaveContext;
 
-            Context.Films = Save.Films;
-            Context.Personnes = Save.Personnes;
+            ContextFactory.GetContext(Save);
 
             //Pour refresh les datagrid
             DataGridFilmReset(Context.Films);
@@ -99,9 +105,7 @@ namespace GestionFilm_Tanguy
         private void MenuItem_Enregistrer_Click(object sender, RoutedEventArgs e)
         {
             //On copie notre Context dans un objet intermédiaire car les liste sont static => probleme avec Serialisation
-            SaveContext Save = new SaveContext();
-            Save.Personnes = Context.Personnes;
-            Save.Films = Context.Films;
+            SaveContext Save = ContextFactory.GetContext();
 
             //Le chemin du fichier
             string CurrentDirectory = Directory.GetCurrentDirectory();
@@ -117,8 +121,9 @@ namespace GestionFilm_Tanguy
         {
 
         }
+        #endregion
 
-        //Lance la fenetre Detail Film
+        #region DETAILS
         private void Film_ShowDetails(object sender, RoutedEventArgs e)
         {
             FilmDetails fenetre = new FilmDetails(((List<Film>)DG_Film.DataContext)[DG_Film.SelectedIndex], true, false);
@@ -132,8 +137,9 @@ namespace GestionFilm_Tanguy
             fenetre.ShowDialog();
         }
 
+        #endregion
 
-        //Pour refresh les datagrid
+        #region REFRESH GRID
         private void DataGridFilmReset(List<Film> list)
         {
             DG_Film.DataContext = null;
@@ -145,6 +151,6 @@ namespace GestionFilm_Tanguy
             DG_Personne.DataContext = null;
             DG_Personne.DataContext = list;
         }
-
+        #endregion
     }
 }

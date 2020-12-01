@@ -71,6 +71,9 @@ namespace GestionFilm_Tanguy.UserControls
             Personne.Prenom = TB_Prenom.Text;
             Personne.Age = TB_Age.Text;
 
+            if (Context.Personnes.Count > 0) Personne.Id = Context.Personnes[Context.Personnes.Count - 1].Id + 1;
+            else Personne.Id = 1;
+
             Context.Personnes.Add(Personne);
 
             AddPersonne?.Invoke(sender, e);

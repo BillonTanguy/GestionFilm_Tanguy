@@ -4,18 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestionFilm_Tanguy.Models
+namespace GestionFilm_Tanguy.Models.Saves
 {
-    public class Personne : BaseModel
+    public class SavePersonne : BaseModel
     {
+        private int id;
         private string nom;
         private string prenom;
         private string age;
 
+        public int Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                Notify();
+            }
+        }
+
         public string Nom
         {
             get { return nom; }
-            set 
+            set
             {
                 nom = value;
                 Notify();
@@ -41,3 +52,4 @@ namespace GestionFilm_Tanguy.Models
         }
     }
 }
+
