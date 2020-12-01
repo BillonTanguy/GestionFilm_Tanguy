@@ -22,6 +22,7 @@ namespace GestionFilm_Tanguy.UserControls
     public partial class PersonneControl : UserControl
     {
         public event RoutedEventHandler SaveChanges;
+        public event RoutedEventHandler AddPersonne;
         public Personne Personne { get; set; }
 
         public PersonneControl()
@@ -29,7 +30,7 @@ namespace GestionFilm_Tanguy.UserControls
             InitializeComponent();
         }
 
-        public void Init(Personne personne, int width = 420, int height = 150, bool btnVisible = true)
+        public void Init(Personne personne, bool btnSaveChanges = true, bool btnAdd = false, int width = 420, int height = 150)
         {
             Personne = personne;
 
@@ -39,9 +40,11 @@ namespace GestionFilm_Tanguy.UserControls
             TB_Age.Text = Personne.Age;
 
             //Pour cacher le bouton si besoin 
-            if(!btnVisible) BTN_SaveChanges.Visibility = Visibility.Hidden;
+            if (!btnSaveChanges) BTN_SaveChanges.Visibility = Visibility.Collapsed;
+            if (!btnAdd) BTN_Add.Visibility = Visibility.Collapsed;
         }
 
+        //SavesChanges
         private void SaveChanges_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -54,6 +57,23 @@ namespace GestionFilm_Tanguy.UserControls
             Personne.Age = TB_Age.Text;
 
             SaveChanges?.Invoke(sender, e);
+        }
+
+        //AddPersonne
+        private void Add_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Add_Personne_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Personne.Nom = TB_Nom.Text;
+            Personne.Prenom = TB_Prenom.Text;
+            Personne.Age = TB_Age.Text;
+
+            Context.Personnes.Add(Personne);
+
+            AddPersonne?.Invoke(sender, e);
         }
     }
 }

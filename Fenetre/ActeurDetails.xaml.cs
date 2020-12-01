@@ -16,28 +16,28 @@ using System.Windows.Shapes;
 namespace GestionFilm_Tanguy.Fenetre
 {
     /// <summary>
-    /// Logique d'interaction pour PersonneDetails.xaml
+    /// Logique d'interaction pour ActeurDetails.xaml
     /// </summary>
-    public partial class PersonneDetails : Window
+    public partial class ActeurDetails : Window
     {
-        Personne Personne { get; set; }
-
-        public PersonneDetails(Personne personne, bool btnSaveChanges = true, bool btnAdd = false)
+        public Acteur Acteur { get; set; }
+        public ActeurDetails(Acteur acteur, bool btnSaveChanges = true, bool btnAdd = false)
         {
             InitializeComponent();
 
-            Personne = personne;
+            Acteur = acteur;
 
-            PersonneControl.Init(Personne, btnSaveChanges, btnAdd);
+            ActeurControl.Init(Acteur, btnSaveChanges, btnAdd);
         }
 
-        //Quand on a sauvegardé les changements, la fenêtre de ferme
-        private void PersonneControl_SaveChanges(object sender, RoutedEventArgs e)
+        //Les boutons sont dans le UserControl
+        //Quand on a sauvegardé les changements, la fenêtre doit fermer
+        private void ActeurControl_SaveChanges(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void Add_Personne(object sender, RoutedEventArgs e)
+        private void ActeurControl_Add(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -32,13 +32,13 @@ namespace GestionFilm_Tanguy.Models
 
         public List<Personne> Realisateurs { get; set; }
         public List<Personne> Producteurs { get; set; }
-        public List<Personne> Acteurs { get; set; }
+        public List<Acteur> Acteurs { get; set; }
 
         public Film()
         {
             Realisateurs = new List<Personne>();
             Producteurs = new List<Personne>();
-            Acteurs = new List<Personne>();
+            Acteurs = new List<Acteur>();
         }
     }
 }

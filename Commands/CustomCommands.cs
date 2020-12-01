@@ -10,9 +10,6 @@ namespace GestionFilm_Tanguy.Commands
     public class CustomCommands
     {
         public static readonly RoutedUICommand Ajouter_Film = new RoutedUICommand();
-        public static readonly RoutedUICommand Delete_Film = new RoutedUICommand();
-        
-
         public static readonly RoutedUICommand Ajouter_Personne = new RoutedUICommand();
 
         public static readonly RoutedUICommand Delete_Personne = new RoutedUICommand();
@@ -20,7 +17,13 @@ namespace GestionFilm_Tanguy.Commands
         public static readonly RoutedUICommand Add_Personne = new RoutedUICommand();
         public static readonly RoutedUICommand SaveChanges_Personne = new RoutedUICommand();
 
+        public static readonly RoutedUICommand Delete_Film = new RoutedUICommand();
+        public static readonly RoutedUICommand Details_Film = new RoutedUICommand();
+        public static readonly RoutedUICommand Add_Film = new RoutedUICommand();
         public static readonly RoutedUICommand SaveChanges_Film = new RoutedUICommand();
+
+        public static readonly RoutedUICommand Add_Acteur = new RoutedUICommand();
+        public static readonly RoutedUICommand SaveChanges_Acteur = new RoutedUICommand();
 
     }
 }

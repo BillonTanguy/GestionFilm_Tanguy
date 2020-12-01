@@ -8,8 +8,13 @@ namespace GestionFilm_Tanguy.Models
 {
     public class Context
     {
+        public static string DOSSIER_EXPORT = @"..\..\Saves";
+        public static string CONTEXT_XML = "Context.xml";
+
         public static List<Personne> Personnes { get; set; }
         public static List<Film> Films { get; set; }
+
+        
 
         public Context()
         {

@@ -16,12 +16,12 @@
 
     <Viewbox StretchDirection="Both" Stretch="Uniform">
         
-            <!--    Ne marche pas et j'ai pas compris pourquoi  
+            <!--    Ne marche pas et j'ai pas compris pourquoi  -->
             <controls:FilmControl x:Name="FilmControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  Margin="10,0,10,0" Loaded="FilmControl_Loaded"/> -->
-                                <!--SaveChanges="FilmControl_SaveChanges"-->
+                                  Margin="10,0,10,0" EventSavesChanges="Event_SaveChanges" /> 
+                                
             
-        
+        <!--
         <Grid>
             <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
@@ -58,7 +58,7 @@
             Command="cmd:CustomCommands.SaveChanges_Film"/>
 
         </Grid>
-        
+        -->
     </Viewbox>
     
 </Window>

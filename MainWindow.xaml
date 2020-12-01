@@ -13,6 +13,7 @@
             <MenuItem Header="Fichier">
                 <MenuItem Header="Ouvrir"  Click="MenuItem_Ouvrir_Click"/>
                 <MenuItem Header="Enregistrer" Click="MenuItem_Enregistrer_Click"/>
+                <MenuItem Header="Enregistrer Sous" Click="MenuItem_EnregistrerSous_Click"/>
             </MenuItem>
             <MenuItem Header="Ajouter">
                 <MenuItem Header="Film" Click="MenuItem_Ajouter_Film_Click"/>
@@ -30,7 +31,7 @@
         
         <DataGrid x:Name="DG_Personne" ItemsSource="{Binding}" AutoGenerateColumns="False"
                   HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="395,90,0,0" 
-                  Width="350" Height="300">
+                  Width="350" Height="300" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom"  Binding="{Binding Nom}"  Width="125"/>
                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"   Width="122"/>
@@ -47,7 +48,7 @@
 
         <DataGrid x:Name="DG_Film" ItemsSource="{Binding}" AutoGenerateColumns="False" 
                   HorizontalAlignment="Left"  VerticalAlignment="Top"  Margin="45,90,0,0" 
-                  Width="350" Height="300">
+                  Width="350" Height="300" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Titre"  Binding="{Binding Titre}" Width="245"/>
                 <DataGridTextColumn Header="Annee" Binding="{Binding Annee}" Width="50"/>

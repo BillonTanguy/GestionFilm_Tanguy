@@ -10,6 +10,7 @@
     <Grid>
         <controls:PersonneControl x:Name="PersonneControl" HorizontalAlignment="Left" VerticalAlignment="Top"
                                   SaveChanges="PersonneControl_SaveChanges"
+                                  AddPersonne="Add_Personne"
                                   Margin="45,40,0,0"
                                   Width="700"/>
     </Grid>

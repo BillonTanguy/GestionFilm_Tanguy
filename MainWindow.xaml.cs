@@ -1,5 +1,4 @@
-﻿using GestionFilm_Tanguy.Controls;
-using GestionFilm_Tanguy.Fenetre;
+﻿using GestionFilm_Tanguy.Fenetre;
 using GestionFilm_Tanguy.Models;
 using System;
 using System.Collections.Generic;
@@ -27,11 +26,6 @@ namespace GestionFilm_Tanguy
     {
         public Context Context { get; set; }
 
-        public const string DOSSIER_EXPORT = @"..\..\Saves";
-
-        public const string FILM_XML = "Film.xml";
-        public const string PERSONNE_XML = "Personne.xml";
-
         public MainWindow()
         {
             //on initialise le context
@@ -43,13 +37,13 @@ namespace GestionFilm_Tanguy
 
         private void MenuItem_Ajouter_Film_Click(object sender, RoutedEventArgs e)
         {
-            NewFilm fenetre = new NewFilm();
+            FilmDetails fenetre = new FilmDetails(new Film(), false, true);
             fenetre.ShowDialog();
         }
 
         private void MenuItem_Ajouter_Personne_Click(object sender, RoutedEventArgs e)
         {
-            NewPersonne fenetre = new NewPersonne();
+            PersonneDetails fenetre = new PersonneDetails(new Personne(), false, true);
             fenetre.ShowDialog();
         }
 
@@ -83,20 +77,18 @@ namespace GestionFilm_Tanguy
         //Ouvre fichiers xml
         private void MenuItem_Ouvrir_Click(object sender, RoutedEventArgs e)
         {
+            SaveContext Save = new SaveContext();
+
             string CurrentDirectory = Directory.GetCurrentDirectory();
-            //J'ai un fichier par type
-            string chemin_personne = System.IO.Path.Combine(CurrentDirectory,DOSSIER_EXPORT, PERSONNE_XML);
-            string chemin_film = System.IO.Path.Combine(CurrentDirectory, DOSSIER_EXPORT,FILM_XML);
+            string chemin_Context = System.IO.Path.Combine(CurrentDirectory, Context.DOSSIER_EXPORT, Context.CONTEXT_XML);
 
-            XmlSerializer serializerPersonne = new XmlSerializer(typeof(List<Personne>));
-            XmlSerializer serializerFilm = new XmlSerializer(typeof(List<Film>));
+            XmlSerializer serializerFilm = new XmlSerializer(typeof(SaveContext));
+            
+            using (StreamReader reader = new StreamReader(chemin_Context))
+                Save = serializerFilm.Deserialize(reader) as SaveContext;
 
-            using (StreamReader reader = new StreamReader(chemin_personne))
-                Context.Personnes = serializerPersonne.Deserialize(reader) as List<Personne>;
-                
-
-            using (StreamReader reader = new StreamReader(chemin_film))
-                Context.Films = serializerFilm.Deserialize(reader) as List<Film>;
+            Context.Films = Save.Films;
+            Context.Personnes = Save.Personnes;
 
             //Pour refresh les datagrid
             DataGridFilmReset(Context.Films);
@@ -104,29 +96,32 @@ namespace GestionFilm_Tanguy
         }
 
         //Enregistre dans fichiers xml
-        //1 fichier pour les films et 1 fichiers pour les personnes pour simplifier
         private void MenuItem_Enregistrer_Click(object sender, RoutedEventArgs e)
         {
+            //On copie notre Context dans un objet intermédiaire car les liste sont static => probleme avec Serialisation
+            SaveContext Save = new SaveContext();
+            Save.Personnes = Context.Personnes;
+            Save.Films = Context.Films;
 
+            //Le chemin du fichier
             string CurrentDirectory = Directory.GetCurrentDirectory();
-            //J'ai un fichier par type
-            string chemin_personne = System.IO.Path.Combine(CurrentDirectory, DOSSIER_EXPORT, PERSONNE_XML);
-            string chemin_film = System.IO.Path.Combine(CurrentDirectory, DOSSIER_EXPORT, FILM_XML);
+            string chemin_Context = System.IO.Path.Combine(CurrentDirectory, Context.DOSSIER_EXPORT, Context.CONTEXT_XML);
 
-            XmlSerializer serializerPersonne = new XmlSerializer(typeof(List<Personne>));
-            XmlSerializer serializerFilm = new XmlSerializer(typeof(List<Film>));
+            XmlSerializer serializerFilm = new XmlSerializer(typeof(SaveContext));
 
-            using (StreamWriter writer = new StreamWriter(chemin_personne))
-                serializerPersonne.Serialize(writer, Context.Personnes);
+            using (StreamWriter writer = new StreamWriter(chemin_Context))
+                serializerFilm.Serialize(writer, Save);
+        }
 
-            using (StreamWriter writer = new StreamWriter(chemin_film))
-                serializerFilm.Serialize(writer, Context.Films);
+        private void MenuItem_EnregistrerSous_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //Lance la fenetre Detail Film
         private void Film_ShowDetails(object sender, RoutedEventArgs e)
         {
-            FilmDetails fenetre = new FilmDetails(((List<Film>)DG_Film.DataContext)[DG_Film.SelectedIndex]);
+            FilmDetails fenetre = new FilmDetails(((List<Film>)DG_Film.DataContext)[DG_Film.SelectedIndex], true, false);
             fenetre.ShowDialog();
         }
 
@@ -150,5 +145,6 @@ namespace GestionFilm_Tanguy
             DG_Personne.DataContext = null;
             DG_Personne.DataContext = list;
         }
+
     }
 }

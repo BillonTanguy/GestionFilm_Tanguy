@@ -18,24 +18,23 @@ using System.Windows.Shapes;
 namespace GestionFilm_Tanguy.UserControls
 {
     /// <summary>
-    /// Logique d'interaction pour ListPersonne.xaml
+    /// Logique d'interaction pour ListActeur.xaml
     /// </summary>
-    public partial class ListPersonne : UserControl
+    public partial class ListActeur : UserControl
     {
+        private List<Acteur> list { get; set; }
 
-        public List<Personne> list { get; set; }
-
-        public ListPersonne()
+        public ListActeur()
         {
-            list = new List<Personne>();
+            list = new List<Acteur>();
 
             InitializeComponent();
         }
 
-        public void Init(List<Personne> Personnes, string label = "Personnes", Film film = null)
+        public void Init(List<Acteur> Acteurs, string label = "Acteurs")
         {
             //Les changements à ma liste ( => DataGrid ) impacteront ma list Personnes -> OK
-            list = Personnes;
+            list = Acteurs;
 
             Label.Content = label;
             DataGrid.DataContext = list;
@@ -53,7 +52,7 @@ namespace GestionFilm_Tanguy.UserControls
             DataGridInit();
         }
 
-        
+
         //Ouvre une fenetre qui affiche la fenetre details d'une personne 
         private void Details_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -62,7 +61,7 @@ namespace GestionFilm_Tanguy.UserControls
 
         private void Details_Personne_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            PersonneDetails fenetreDetail = new PersonneDetails(list[DataGrid.SelectedIndex]);
+            ActeurDetails fenetreDetail = new ActeurDetails(list[DataGrid.SelectedIndex]);
             fenetreDetail.ShowDialog();
         }
 
@@ -87,10 +86,15 @@ namespace GestionFilm_Tanguy.UserControls
             fenetre.ShowDialog();
             Personne personne = (Personne)fenetre.DataContext;
 
-            if (!list.Contains(personne)) list.Add(personne);
+            Acteur monActeur = new Acteur();
+            monActeur.Nom = personne.Nom;
+            monActeur.Prenom = personne.Prenom;
+            monActeur.Age = personne.Age;
+            monActeur.Role = "";
+
+            if (!list.Contains(personne)) list.Add(monActeur);
 
             DataGridInit();
         }
-
     }
 }

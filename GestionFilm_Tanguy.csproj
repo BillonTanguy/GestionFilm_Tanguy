@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Fenetre\ActeurDetails.xaml.cs">
+      <DependentUpon>ActeurDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fenetre\FilmDetails.xaml.cs">
       <DependentUpon>FilmDetails.xaml</DependentUpon>
     </Compile>
@@ -64,9 +67,17 @@
     <Compile Include="Fenetre\PersonneDetails.xaml.cs">
       <DependentUpon>PersonneDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Acteur.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\SaveContext.cs" />
+    <Compile Include="UserControls\ActeurControl.xaml.cs">
+      <DependentUpon>ActeurControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilmControl.xaml.cs">
       <DependentUpon>FilmControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ListActeur.xaml.cs">
+      <DependentUpon>ListActeur.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ListPersonne.xaml.cs">
       <DependentUpon>ListPersonne.xaml</DependentUpon>
@@ -74,23 +85,7 @@
     <Compile Include="UserControls\PersonneControl.xaml.cs">
       <DependentUpon>PersonneControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\Ajout_Personne_To_Film.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Details_Film.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Details_Personne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NewFilm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NewPersonne.xaml">
+    <Page Include="Fenetre\ActeurDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,26 +110,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\CustomCommands.cs" />
-    <Compile Include="Controls\Ajout_Personne_To_Film.xaml.cs">
-      <DependentUpon>Ajout_Personne_To_Film.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Details_Film.xaml.cs">
-      <DependentUpon>Details_Film.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Details_Personne.xaml.cs">
-      <DependentUpon>Details_Personne.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\NewFilm.xaml.cs">
-      <DependentUpon>NewFilm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\NewPersonne.xaml.cs">
-      <DependentUpon>NewPersonne.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\ActeurControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\FilmControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ListActeur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -24,38 +24,15 @@ namespace GestionFilm_Tanguy.Fenetre
 
         public List<Personne> Realisateurs { get; set; }
         public List<Personne> Producteurs { get; set; }
-        public List<Personne> Acteurs { get; set; }
+        public List<Acteur> Acteurs { get; set; }
 
-        public FilmDetails(Film film)
+        public FilmDetails(Film film, bool Save = true, bool Add = false)
         {
-            Film = film;
-
-            //Pour ne pas impacter directement mon film et pouvoir sauvegarder les changements si besoin
-            //on copie les objets un à un dans des listes séparées
-
-            Realisateurs = new List<Personne>();
-            Producteurs = new List<Personne>();
-            Acteurs = new List<Personne>();
-
-            foreach (Personne p in film.Realisateurs)
-                Realisateurs.Add(p);
-
-            foreach (Personne p in film.Producteurs)
-                Producteurs.Add(p);
-
-            foreach (Personne p in film.Acteurs)
-                Acteurs.Add(p);
-
             InitializeComponent();
 
-            //FilmControl.Init(Film);
+            Film = film;
 
-            TB_Titre.Text = Film.Titre;
-            TB_Annee.Text = Film.Annee;
-
-            RealisateurControl.Init(Realisateurs, "Réalisateurs");
-            ProducteurControl.Init(Producteurs, "Producteurs");
-            ActeurControl.Init(Acteurs, "Acteurs");
+            FilmControl.Init(Film, Save, Add);
         }
 
         private void SaveChanges_Film_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -65,9 +42,6 @@ namespace GestionFilm_Tanguy.Fenetre
 
         private void SaveChanges_Film_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Film.Titre = TB_Titre.Text;
-            Film.Annee = TB_Annee.Text;
-
             //On réinitialise les listes
             Film.Realisateurs.Clear();
             Film.Producteurs.Clear();
@@ -76,9 +50,14 @@ namespace GestionFilm_Tanguy.Fenetre
             //On copie
             foreach (Personne p in Realisateurs) Film.Realisateurs.Add(p);
             foreach (Personne p in Producteurs) Film.Producteurs.Add(p);
-            foreach (Personne p in Acteurs) Film.Acteurs.Add(p);
+            foreach (Acteur a in Acteurs) Film.Acteurs.Add(a);
 
             //on ferme la fenêtre
+            this.Close();
+        }
+
+        private void Event_SaveChanges(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

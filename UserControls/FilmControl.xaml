@@ -10,7 +10,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.CommandBindings>
-        <!--<CommandBinding Command="cmd:CustomCommands.SaveChanges_Film" CanExecute="SaveChanges_Film_CanExecute" Executed="SaveChanges_Film_Executed" /> -->
+        <CommandBinding Command="cmd:CustomCommands.SaveChanges_Film" CanExecute="SaveChanges_Film_CanExecute" Executed="SaveChanges_Film_Executed" />
+        <CommandBinding Command="cmd:CustomCommands.Add_Film" CanExecute="Add_Film_CanExecute" Executed="Add_Film_Executed" />
     </UserControl.CommandBindings>
 
     <Viewbox StretchDirection="Both" Stretch="Uniform">
@@ -20,18 +21,18 @@
                 <ColumnDefinition Width="20"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
                 <ColumnDefinition Width="20"></ColumnDefinition>
-                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="345"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="340"></RowDefinition>
+                <RowDefinition Height="300"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label x:Name="LB_Titre" Content="Nom" HorizontalAlignment="Center"></Label>
-            <Label x:Name="LB_Annee" Content="Prenom" HorizontalAlignment="Center" Grid.Row="2"></Label>
+            <Label x:Name="LB_Titre" Content="Titre" HorizontalAlignment="Center"></Label>
+            <Label x:Name="LB_Annee" Content="Année" HorizontalAlignment="Center" Grid.Row="2"></Label>
 
             <TextBox x:Name="TB_Titre" HorizontalAlignment="Center" Width="200" Height="30" Grid.Column="2"></TextBox>
             <TextBox x:Name="TB_Annee" HorizontalAlignment="Center" Width="200" Height="30" Grid.Row="2" Grid.Column="2"></TextBox>
@@ -40,13 +41,17 @@
                                   Grid.Row="4" Grid.Column="0"/>
             <local:ListPersonne x:Name="ProducteurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
                                   Grid.Row="4" Grid.Column="2"/>
-            <local:ListPersonne x:Name="ActeurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
+            <local:ListActeur x:Name="ActeurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
                                   Grid.Row="4" Grid.Column="4"/>
 
-            <!--
+            
             <Button x:Name="SavesChanges" Content="Save Changes"
-                    Grid.Column="4"
-                    Command="cmd:CustomCommands.SaveChanges_Film"/> -->
+                    Grid.Column="4" Width="150"
+                    Command="cmd:CustomCommands.SaveChanges_Film"/>
+
+            <Button x:Name="Add" Content="Add"
+                    Grid.Column="4" Grid.Row="2" Width="150"
+                    Command="cmd:CustomCommands.Add_Film"/>
 
         </Grid>
     </Viewbox>

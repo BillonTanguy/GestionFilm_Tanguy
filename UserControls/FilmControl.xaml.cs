@@ -21,16 +21,23 @@ namespace GestionFilm_Tanguy.UserControls
     /// </summary>
     public partial class FilmControl : UserControl
     {
-        //public event RoutedEventHandler SaveChanges;
+        public event RoutedEventHandler EventSavesChanges;
+        private Film Film { get; set; }
 
-        public Film Film { get; set; }
+        private List<Personne> Realisateurs { get; set; }
+        private List<Personne> Producteurs { get; set; }
+        private List<Acteur> Acteurs { get; set; }
 
         public FilmControl()
         {
             InitializeComponent();
+
+            Realisateurs = new List<Personne>();
+            Producteurs = new List<Personne>();
+            Acteurs = new List<Acteur>();
         }
 
-        public void Init(Film film, int width = 420, int height = 150, bool btnVisible = true)
+        public void Init(Film film, bool btnSaveChanges = true, bool btnAdd = false, int width = 420, int height = 150)
         {
             Film = film;
 
@@ -38,15 +45,20 @@ namespace GestionFilm_Tanguy.UserControls
             TB_Titre.Text = Film.Titre;
             TB_Annee.Text = Film.Annee;
 
-            //if (!btnVisible) SavesChanges.Visibility = Visibility.Hidden;
+            foreach (Personne p in film.Realisateurs) Realisateurs.Add(p);
+            foreach (Personne p in film.Producteurs) Producteurs.Add(p);
+            foreach (Acteur a in film.Acteurs) Acteurs.Add(a);
+
+            if (!btnSaveChanges) SavesChanges.Visibility = Visibility.Collapsed;
+            if (!btnAdd) Add.Visibility = Visibility.Collapsed;
             
-            RealisateurControl.Init(Film.Realisateurs);
-            ProducteurControl.Init(Film.Producteurs);
-            ActeurControl.Init(Film.Acteurs);
+            RealisateurControl.Init(Realisateurs, "Réalisateurs");
+            ProducteurControl.Init(Producteurs, "Producteurs");
+            ActeurControl.Init(Acteurs, "Acteurs");
             
         }
 
-        /*
+
         private void SaveChanges_Film_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -57,12 +69,30 @@ namespace GestionFilm_Tanguy.UserControls
             Film.Titre = TB_Titre.Text;
             Film.Annee = TB_Annee.Text;
 
-            Film.Realisateurs = (List<Personne>)RealisateurControl.DataContext;
-            Film.Producteurs = (List<Personne>)ProducteurControl.DataContext;
-            Film.Acteurs = (List<Personne>)ActeurControl.DataContext;
+            Film.Realisateurs = (List<Personne>)(RealisateurControl.DataGrid.DataContext);
+            Film.Producteurs = (List<Personne>)(ProducteurControl.DataGrid.DataContext);
+            Film.Acteurs = (List<Acteur>)(ActeurControl.DataGrid.DataContext);
 
-            SaveChanges?.Invoke(sender, e);
+            EventSavesChanges?.Invoke(sender, e);
         }
-        */
+
+        private void Add_Film_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void Add_Film_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Film.Titre = TB_Titre.Text;
+            Film.Annee = TB_Annee.Text;
+
+            Film.Realisateurs = (List<Personne>)(RealisateurControl.DataGrid.DataContext);
+            Film.Producteurs = (List<Personne>)(ProducteurControl.DataGrid.DataContext);
+            Film.Acteurs = (List<Acteur>)(ActeurControl.DataGrid.DataContext);
+
+            Context.Films.Add(Film);
+
+            EventSavesChanges?.Invoke(sender, e);
+        }
     }
 }
