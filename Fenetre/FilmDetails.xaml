@@ -15,50 +15,8 @@
     </Window.CommandBindings>
 
     <Viewbox StretchDirection="Both" Stretch="Uniform">
-        
-            <!--    Ne marche pas et j'ai pas compris pourquoi  -->
-            <controls:FilmControl x:Name="FilmControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  Margin="10,0,10,0" EventSavesChanges="Event_SaveChanges" /> 
-                                
-            
-        <!--
-        <Grid>
-            <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-            <ColumnDefinition Width="20"></ColumnDefinition>
-            <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition Width="20"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="340"></RowDefinition>
-        </Grid.RowDefinitions>
-
-            <Label x:Name="LB_Titre" Content="Nom" HorizontalAlignment="Center" Grid.Column="1"></Label>
-            <Label x:Name="LB_Annee" Content="Prenom" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="2"></Label>
-
-        <TextBox x:Name="TB_Titre" HorizontalAlignment="Center" Width="200" Height="30" Grid.Column="3"></TextBox>
-        <TextBox x:Name="TB_Annee" HorizontalAlignment="Center" Width="200" Height="30" Grid.Row="2" Grid.Column="3"></TextBox>
-
-        <controls:ListPersonne x:Name="RealisateurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                  Grid.Row="4" Grid.Column="1"/>
-        <controls:ListPersonne x:Name="ProducteurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                Grid.Row="4" Grid.Column="3"/>
-        <controls:ListPersonne x:Name="ActeurControl" HorizontalAlignment="Left" VerticalAlignment="Top"
-                            Grid.Row="4" Grid.Column="5"/>
-
-        <Button x:Name="SavesChanges" Content="Save Changes"
-            Grid.Column="5"
-            Command="cmd:CustomCommands.SaveChanges_Film"/>
-
-        </Grid>
-        -->
+        <controls:FilmControl x:Name="FilmControl" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Margin="10,0,10,0" EventSavesChanges="Event_SaveChanges" /> 
     </Viewbox>
     
 </Window>

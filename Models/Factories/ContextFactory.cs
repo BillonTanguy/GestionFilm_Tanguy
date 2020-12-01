@@ -13,8 +13,8 @@ namespace GestionFilm_Tanguy.Models.Factory
         {
             foreach (SavePersonne p in saveContext.Personnes) Context.Personnes.Add(PersonneFactory.GetPersonne(p));
             foreach (SaveFilm f in saveContext.Films) Context.Films.Add(FilmFactory.GetFilm(f));
-
         }
+
         public static SaveContext GetContext()
         {
             SaveContext result = new SaveContext();

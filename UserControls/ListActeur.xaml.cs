@@ -91,9 +91,14 @@ namespace GestionFilm_Tanguy.UserControls
             monActeur.Nom = personne.Nom;
             monActeur.Prenom = personne.Prenom;
             monActeur.Age = personne.Age;
-            monActeur.Role = "TEST";
 
-            if (!list.Contains(monActeur)) list.Add(monActeur);
+            //Je n'ai pas concervé la référence d'objet,
+            //Je compare les Id
+            bool present = false;
+            foreach(Acteur a in list)
+                if (a.Id == monActeur.Id) present = true;
+
+            if (!present) list.Add(monActeur);
 
             DataGridInit();
         }

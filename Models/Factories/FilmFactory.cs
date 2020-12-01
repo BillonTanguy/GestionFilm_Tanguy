@@ -42,15 +42,15 @@ namespace GestionFilm_Tanguy.Models.Factory
             foreach (int p in saveFilm.Producteurs) result.Producteurs.Add(Context.Personnes.FirstOrDefault(pers => pers.Id == p));
             for(int index = 0; index < saveFilm.Acteurs.Count; index++)
             {
-                Acteur actor = new Acteur();
-
                 Personne Personne = Context.Personnes.FirstOrDefault(pers => pers.Id == saveFilm.Acteurs[index]);
 
-                actor.Id = Personne.Id;
-                actor.Nom = Personne.Nom;
-                actor.Prenom = Personne.Prenom;
-                actor.Age = Personne.Age;
-                actor.Role = saveFilm.Roles[index];
+                result.Acteurs.Add(new Acteur {
+                    Id = Personne.Id,
+                    Nom = Personne.Nom,
+                    Prenom = Personne.Prenom,
+                    Age = Personne.Age,
+                    Role = saveFilm.Roles[index],
+                });
             }
 
             return result;
