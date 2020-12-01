@@ -1,18 +1,17 @@
-Salut Christopher
+Salut Christopher.
 
-Dans une premier temps j'ai tout fais sans UserControl.
-J'affiche mes fenêtre une à une etc...
-Toutes ces fenêtres sont dans le dossier Control.
+Du coup le fonctionnement de base est ok.
+Mais je n'ai pas mis beaucoup de protection.
+J'ai pu rajouter une fenêtre pour l'ouverture et enregistrement
 
-Ensuite, quand j'ai commencé à comprendre le truc, j'ai voulu reessayer avec des UserControl et des nouvelles fenêtres.
-Ces fenêtres sont dans le dossier : Fenetre
-Mais tout ne marche pas avec elles.
+J'ai remarqué, dans les détails film,
+si je modifie un réalisateur ou producteur,
+les modifications ne sont pas répercutées sur l'acteur.
+Les deux objets sont ditincts, je devrais arranger ça 
+mais il est 16 heure et je n'aurais plus envie après la réunion ^^
 
-J'ai mis aucune protection/tests donc si tu joue à l'utilisateur lambda ca va plnater
+Voila, 
 
-J'espère que le code sera lisible.
+Bonne soirée/Week end à toi
 
-Bon week end à toi
-
-Tanguy
-
+Tanguy 
