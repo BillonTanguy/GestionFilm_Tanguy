@@ -40,7 +40,7 @@ namespace GestionFilm_Tanguy.UserControls
             DataGrid.DataContext = list;
         }
 
-        //On supprime la personne de la list
+        #region DELETE
         private void Delete_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -51,9 +51,9 @@ namespace GestionFilm_Tanguy.UserControls
             list.RemoveAt(DataGrid.SelectedIndex);
             DataGridInit();
         }
+        #endregion
 
-
-        //Ouvre une fenetre qui affiche la fenetre details d'une personne 
+        #region DETAILS
         private void Details_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -64,16 +64,9 @@ namespace GestionFilm_Tanguy.UserControls
             ActeurDetails fenetreDetail = new ActeurDetails(list[DataGrid.SelectedIndex]);
             fenetreDetail.ShowDialog();
         }
+        #endregion
 
-        //Pour actualiser la DataGrid
-        private void DataGridInit()
-        {
-            DataGrid.DataContext = null;
-            DataGrid.DataContext = list;
-        }
-
-
-        //On ouvre une fenetre pour ajouter une personne
+        #region ADD
         private void Add_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -101,6 +94,14 @@ namespace GestionFilm_Tanguy.UserControls
             if (!present) list.Add(monActeur);
 
             DataGridInit();
+        }
+        #endregion
+
+        //Pour actualiser la DataGrid
+        private void DataGridInit()
+        {
+            DataGrid.DataContext = null;
+            DataGrid.DataContext = list;
         }
     }
 }

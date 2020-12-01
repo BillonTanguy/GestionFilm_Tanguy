@@ -44,6 +44,9 @@ namespace GestionFilm_Tanguy.Models.Factory
             {
                 Personne Personne = Context.Personnes.FirstOrDefault(pers => pers.Id == saveFilm.Acteurs[index]);
 
+                //On perd la référence d'objet :(
+                //Faut faire attention quand on modifie une personne ou acteur
+
                 result.Acteurs.Add(new Acteur {
                     Id = Personne.Id,
                     Nom = Personne.Nom,

@@ -44,10 +44,12 @@ namespace GestionFilm_Tanguy.UserControls
             if (!btnAdd) BTN_Add.Visibility = Visibility.Collapsed;
         }
 
-        //SavesChanges
+        #region SAVE CHANGES
         private void SaveChanges_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            //On ne veut pas de personne sans caractéristique
+            if(TB_Nom.Text == "" && TB_Prenom.Text == "" && TB_Age.Text == "") e.CanExecute = false;
+            else e.CanExecute = true;
         }
 
         private void SaveChanges_Personne_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -58,8 +60,9 @@ namespace GestionFilm_Tanguy.UserControls
 
             SaveChanges?.Invoke(sender, e);
         }
+        #endregion
 
-        //AddPersonne
+        #region ADD
         private void Add_Personne_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -78,5 +81,6 @@ namespace GestionFilm_Tanguy.UserControls
 
             AddPersonne?.Invoke(sender, e);
         }
+        #endregion ADD
     }
 }

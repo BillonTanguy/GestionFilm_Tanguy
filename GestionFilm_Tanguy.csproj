@@ -56,7 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FactoryContext\GetContext.cs" />
     <Compile Include="Fenetre\ActeurDetails.xaml.cs">
       <DependentUpon>ActeurDetails.xaml</DependentUpon>
     </Compile>

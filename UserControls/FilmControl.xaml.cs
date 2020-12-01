@@ -58,10 +58,12 @@ namespace GestionFilm_Tanguy.UserControls
             
         }
 
-
+        #region SAVE CHANGES
         private void SaveChanges_Film_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            if(TB_Titre.Text == "" && TB_Annee.Text == "") e.CanExecute = false;
+            else e.CanExecute = true;
+
         }
 
         private void SaveChanges_Film_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -75,7 +77,9 @@ namespace GestionFilm_Tanguy.UserControls
 
             EventSavesChanges?.Invoke(sender, e);
         }
+        #endregion
 
+        #region ADD
         private void Add_Film_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -97,5 +101,6 @@ namespace GestionFilm_Tanguy.UserControls
 
             EventSavesChanges?.Invoke(sender, e);
         }
+        #endregion
     }
 }
