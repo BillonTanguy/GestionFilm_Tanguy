@@ -2,16 +2,18 @@ Salut Christopher.
 
 Du coup le fonctionnement de base est ok.
 Mais je n'ai pas mis beaucoup de protection.
-J'ai pu rajouter une fenêtre pour l'ouverture et enregistrement
 
-J'ai remarqué, dans les détails film,
-si je modifie un réalisateur ou producteur,
-les modifications ne sont pas répercutées sur l'acteur.
-Les deux objets sont ditincts, je devrais arranger ça 
-mais il est 16 heure et je n'aurais plus envie après la réunion ^^
+J'ai remarquÃ©, dans les dÃ©tails film,
+si je modifie un rÃ©alisateur ou producteur,
+les modifications ne sont pas rÃ©percutÃ©es sur l'acteur.
+Les deux objets sont ditincts, je devrais arranger Ã§a.
+
+Egalement, en sauvegardant, les roles et id des acteurs, pour chaque film, ne sont pas liÃ©s.
+Donc problÃ¨me si les deux listes ne sont pas remplies de la mÃªme faÃ§on.
+Mais il est 16 heure et je n'aurais plus envie aprÃ¨s la rÃ©union ^^
 
 Voila, 
 
-Bonne soirée/Week end à toi
+Bonne soirÃ©e/Week end Ã  toi
 
 Tanguy 
